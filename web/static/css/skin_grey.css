@@ -1,0 +1,48 @@
+/* GREY SKIN */
+:root {
+    --fg : #a0a0a0;
+    --hr : #303030;
+    --bg : #1c1c1c;
+}
+
+.modal_dialog_content {
+    background-color: #222 !important;
+    border-radius: 2px 2px 2px 2px !important; 
+    box-shadow: none !important;
+}
+
+#modal_subcaption,
+#modal_caption {
+    background-image: none !important;
+    box-shadow: none !important;
+    border-radius: 2px 2px 2px 2px !important; 
+    background-color: #333 !important;
+}
+
+input {
+    color: #ffc080 !important;
+}
+
+.select2-search {
+    background-color: #202020 !important;    
+}
+
+.select2-search__field {
+    background-color: #303030 !important;
+    color: #ffc880 !important;
+}
+.select2-results__option {
+    background-color: #303030 !important;
+    color: #ffc880 !important;
+}
+
+button.btn-success,
+button.btn-danger {
+    font-weight: 600;
+    color: #ffffff;
+    text-shadow: 1px 1px 0px #4448;
+}
+
+#updates div article img {
+    box-shadow: none !important;
+}

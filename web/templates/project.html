@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}{% load app_filters %}
+
+{% block title %}{{ lex.title }}{% endblock title %}
+{% block section %}View Project {{ data.id }}{% endblock section %}
+{% block icon %}dungeon{% endblock icon %}
+
+{% block buttons %}
+	<button title="Go back"  	 onclick="window.location='{{ root }}/scenia/';" 						class="header_button btn btn-warning" style="right:  9px;"><i class="fa fa-arrow-left"></i></button>
+	<button title="Edit Project" onclick="Scenia.Modal.Project.Summon.Update({{ data.id }});"	class="header_button btn btn-primary"  style="right: 50px;"><i class="fa fa-wrench"></i></button>
+	<button title="Add new step" onclick="Scenia.Modal.Step.Summon.Insert({{ data.id }});"					class="header_button btn btn-success" style="right: 91px;"><i class="fa fa-plus"></i></button>
+{% endblock buttons %}
+
+{% block body %}
+	<div class="scroller">
+		<div class="col-md-12" id="workspace">
+			<div class="col-md-12 no-print" style="padding-top: 8px;">
+				on <i>
+					{% for t in data.taxonomies %}
+						<a href="{{ root }}/scenia/taxonomy/?id={{t.id}}" id="{{ t.id }}"><i>{{ t.name }}</i></a>
+					{% endfor %}
+				</i>
+				<h3>{% if not data.name %}Unnamed Project{% else %}{{ data.name }}{% endif %}</h3> by <b><a href="{{root}}/scenia/profile/?id={{ data.author }}">{{ data.author }}</a></b>
+			</div>
+			<div class="project-printable-title col-md-12 print-only" style="text-align: right">
+				<b>{{ data.name }}</b> by <b><i>{{ data.author }}</i></b>
+			</div>
+			<div class="col-md-12" style="padding-bottom: 16px; padding-top: 8px;">
+				<small><i>{% if not data.description %}This seems to be undescriptable...or the author was too lazy.{% else %}{{ data.description }}{% endif %}</i></small>
+			</div>
+			<div id="project-steps"> 
+				{% for step in data.steps %}
+					{% include "widget_step.html" with data=step project_id=data.id %}
+				{% endfor %}
+			</div>
+		</div>			
+	</div>	
+{% endblock body %}
+
+{% block script %}
+	function editStep(id){ 
+		Scenia.Modal.Step.Summon.Update(id);
+	}
+	function addStep(id){  
+		Scenia.Modal.Step.Summon.Insert({{ data.id }});
+	}
+{%endblock script %}
+

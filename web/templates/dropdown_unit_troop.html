@@ -1,0 +1,40 @@
+{% load static %}
+{% load warhammer %}
+<select id="unit" value="">
+    <option value="">-- {{ lex.choose_unit | title }} --</option>
+    {% for u in page.units %}
+    <option value="{{ u.value }}">{{ u.name }}</option>
+    {% endfor %}
+</select>
+<script>
+
+    function requestUnitData(e){
+        val = $(this).val();
+        if(val == '')return false;
+        $('#errors').html("");
+        apiPost(
+        `get/`,
+        {
+            'type': val
+        },
+        function(data){
+            $('#tab_datacard').html(data.data);
+            $('#tab_pictures').html(data.pictures);
+            $('#tab_stratagems').html(data.stratagems);
+            $('#label_tab_datacard').click();
+        },
+        function(ko){
+            try {
+                $('#errors').html(ko.responseJSON.errorResponse);
+            } catch(e){
+                $('#errors').html(e);
+            }
+        });
+    }
+
+    $('#unit').on('change', requestUnitData);
+    {% if page.unit %}
+    $(`#unit option[value={{page.unit}}]`).attr('selected', true);
+    {% endif %}
+    $('#unit').select2();  
+</script>

@@ -1,0 +1,89 @@
+/* Color global para etiquetas  */
+#unit_form label {
+    background: #202020;
+    width: 100% !important;
+    border-radius: 4px 4px 0px 0px;
+}
+
+ /* Color global de paneles  */
+#unit_form > div > fieldset > div.form-row {
+    background: #181818 !important;
+}
+ /* Estilo especial de cajas de texto */
+ #unit_form > div > fieldset > div.form-row input[type="number"]:active,
+ #unit_form > div > fieldset > div.form-row input[type="number"]:focus,
+ #unit_form > div > fieldset > div.form-row input[type="select"]:active,
+ #unit_form > div > fieldset > div.form-row input[type="select"]:focus,
+#unit_form > div > fieldset > div.form-row input[type="text"]:focus,
+#unit_form > div > fieldset > div.form-row input[type="text"]:active {
+    background  : #f0a000 !important;
+    color       : #303030 !important;
+}
+
+
+#unit_form > div > fieldset > div.form-row input[type="number"],
+#unit_form > div > fieldset > div.form-row input[type="text"] {
+    width:100% !important;
+    margin: 0px 0px 0px 0px;
+    border-radius: 0px 0px 0px 0px !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-top: none !important;
+    border-bottom: none !important;
+    outline: none !important;
+}
+#unit_form > div > fieldset > div.form-row input[type="number"]{
+    height      : 36px !important;
+    text-align  : center;
+    padding-right: 8px !important;
+    font-family: space_marineregular;
+    line-height: 16px !important;
+    font-size: 16px !important;
+}
+/* Estirar select, wrapper de select y boton al 100%  */
+#unit_form .add-related,
+#unit_form .related-widget-wrapper,
+#unit_form .related-widget-wrapper select {
+    display: inline-block;
+    width: 100% !important;
+    margin: 0px 0px 0px 0px !important;
+}
+
+/* Modificar ancho de selectores para que quepan mas en la pantalla */
+#unit_form > div > fieldset > div.form-row,
+#unit_form > div > fieldset > div.form-row.field-opt_rules ,
+#unit_form > div > fieldset > div.form-row.field-opt_troops ,
+#unit_form > div > fieldset > div.form-row.field-troops ,
+#unit_form > div > fieldset > div.form-row.field-keywords {
+    width: 33%;
+    display: inline-block;
+    margin: 0px 0px 0px 0px;
+    box-sizing: border-box !important;
+    border-collapse: collapse;
+    border: 1px inset #8882;
+    background: #303030;
+    font-family: space_marineregular;
+    border-radius: 4px 4px 4px 4px;
+}
+
+/* Mosaico a dos tercios entre titulo y subtitulo */
+#unit_form > div > fieldset > div.form-row.field-title{ width: 75%; }
+#unit_form > div > fieldset > div.form-row.field-subtitle{ width: 24.5%;}
+/* Armada, bien tocho  */
+#unit_form > div > fieldset > div.form-row.field-army{ width: 100%; }
+
+/* Botones editar, eliminar y añadir, cuando son visibles*/
+#unit_form .field-transport a,
+#unit_form .field-faction a,
+#unit_form .field-element a{
+    display: inline-block;
+    text-align: center;
+    margin: 0px 0px 0px 0px !important;
+    width: 33.3% !important;
+}
+
+/* Ocultar botones para editar o añadir armadas, no hacen falta. */ 
+#change_id_army,
+#add_id_army {
+    display: none !important; 
+}

@@ -1,0 +1,19 @@
+{% include "modals/modal_wrapper.html" %}
+<button id="modal_caption" class="btn" id="{{ data.id }}">{% if data.id %}Edit Step #{{ data.order }}{% else %}Add Step{% endif %}</button>
+{% include 'modals/formrow.html'        with                          id="project"        type="hidden"     data=foreign_key                                                                                                                               %}
+{% if data.id %}
+    {% include 'modals/formrow.html'    with                          id="step_id"        type="hidden"     data=data.id                                                                                                                                   %}
+    {% include 'modals/itemlist.html'   with caption="Pictures"       id="pictures"       step_id=data.id   data=data.pictures    model="Picture"                                                                                                          %}
+    {% include 'modals/select2.html'    with caption="Materials"      id="materials"      step_id=data.id   data=data.materials   model="Material"    multiple=True                                                                                        %}
+    {% include 'modals/select2.html'    with caption="Tools"          id="gears"          step_id=data.id   data=data.gears       model="Gear"        multiple=True   fields="['id', 'spacer', 'name' ]"                                                   %}
+    {% include 'modals/select2.html'    with caption="Colors"         id="colors"         step_id=data.id   data=data.colors      model="Color"       multiple=True   fields="['RGB', 'brand', 'spacer', 'code', 'spacer', 'name' ]" hide_button=True      %}
+{% endif %}
+{% include 'modals/formrow.html'    with caption="Hint"               id="brief"          type="text"       data=data.brief_description                                                                                                                    %}
+{% include 'modals/formrow.html'    with caption="Minutes"            id="time_required"  type="number"     data=data.time_required                                                                                                                        %}
+{% if data.id %}
+    {% include 'modals/formbutton.html' with caption="Update"         id="update_step"    type="success"    data="Scenia.Trigger.Step.Update" arguments=data.id     icon="edit"                                                                                       %}
+    {% include 'modals/formbutton.html' with caption="Delete"         id="delete_step"    type="danger"     data="Scenia.Trigger.Step.Delete" arguments=data.id     icon="trash"                                                                                       %}
+{% else %}
+    {% include 'modals/formbutton.html' with caption="Create"         id="create_step"    type="success"    data="Scenia.Trigger.Step.Insert"                       icon="plus"                                                                                       %}
+{% endif %}
+{% include "modals/modal_wrapper.html" with close=True %}

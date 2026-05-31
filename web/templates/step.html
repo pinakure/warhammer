@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load app_filters %}
+
+{% block title %}Step {{ step }} (Project {{ project }}){% endblock title %}
+{% block section %}Step {{ step }} <span style="color: #ccc">(Project {{project}})</span>{% endblock section %}
+{% block icon %}hammer{% endblock icon %}
+
+{% block buttons %}
+    <button onclick="window.location='{{ root }}admin/scenia/step/{{ data.id }}/change/';" class="header_button btn btn-success"  style="right: 91px;"><i class="fa fa-edit"></i></button>
+    <button onclick=""	class="header_button btn btn-danger"  style="right: 50px;"><i class="fa fa-trash"></i></button>
+	<button onclick="window.location='{{root}}?project={{ project }}'" 	class="header_button btn btn-warning" style="right:  9px;"><i class="fa fa-arrow-left"></i></button>
+{% endblock buttons %}
+
+{% block script %}
+
+{% endblock script %}
+
+{% block style %}
+.marco {
+    border: 1px #8006 dashed;
+}
+
+.photoframe {
+    padding: 16px 16px 32px 16px;
+    border: 2px solid #000;
+    
+}
+/* Override style defined @ global.css */
+{% endblock style %}
+
+{% block body %}
+    <div style="height: calc(100% - 50px);" class="col-md-12 marco" >
+        {% if layout.1x1 %}{% include "layouts/1x1.html" with border=debug step=data %}{% endif %}
+        {% if layout.1x2 %}{% include "layouts/1x2.html" with border=debug step=data %}{% endif %}
+        {% if layout.1x3 %}{% include "layouts/1x3.html" with border=debug step=data %}{% endif %}
+        {% if layout.1x4 %}{% include "layouts/1x4.html" with border=debug step=data %}{% endif %}
+    </div>
+{% endblock body %}

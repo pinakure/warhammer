@@ -1,0 +1,8 @@
+<span onmouseover="document.getElementById('footer').setAttribute('style', 'box-sizing: border-box; background-position: 50% 50%; width: 100%; height: 128px; background-color: #f0f0f0; background-image: url(\'/static/img/{{ weapon.name }}.jpg\'); background-size: auto 100%; background-repeat: no-repeat;');">
+    <div style="display: inline-block;width: 24px">
+        <img id="weapon_{{weapon.id}}" style="border-radius: 4px 4px 4px 4px; border: 1px #8888 solid; margin-right: 8px; display:inline-block;width: 16px; height: auto;" src="/static/img/{{weapon.name}}.jpg"/>
+    </div>
+    <div style="display: inline-block; width: 512px">
+        {{weapon.name}} ({{weapon.type.name}})
+    </div>
+</span>

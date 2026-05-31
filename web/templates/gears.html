@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load app_filters %}
+
+{% block buttons %}
+    {% if user.is_superuser %}
+        <button onclick="window.location='{{ root }}/admin/scenia/gear/';" class="header_button btn btn-danger"   style="right: 91px;"><i class="fa fa-exclamation"></i></button>
+    {% endif %}
+{% endblock buttons %}
+
+{% block section %}Gears{% endblock section %}
+{% block icon %}hammer{% endblock icon %}
+{% block title %}Gears{% endblock title %}
+
+{% block body %}
+    {% include 'bodyscroll.html' %}
+    <div id="gears" style=" display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-around;">
+        {% for m in gears %}
+            {% include 'widget_gear.html' with gear=m|evaluate %}
+        {% endfor %}
+    </div>
+{% endblock body %}

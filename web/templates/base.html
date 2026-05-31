@@ -1,0 +1,65 @@
+{% load static %}{% load app_filters %}<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="encoding" value="utf-8">		
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">		
+        <title>Scenia : {% block title %}{% endblock title %}</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css'%}">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/default.css'%}">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/global.css'%}">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/select2.css'%}">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/fontawesome.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'css/' %}skin_{{ skin }}.css" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/skin.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/warhammer_style.css' %}" />
+		<script src="{% static 'js/jquery.js' %}"></script>
+		<script src="{% static 'js/popper.js' %}"></script>
+		<script src="{% static 'js/select2.js'%}"></script>
+		<script src="{% static 'js/bootstrap.js'%}"></script>
+		<script src="{% static 'js/infinite.js'%}"></script>
+		<script src="{% static 'js/modal.js' %}"></script>
+		<script src="{% static 'js/trigger.js' %}"></script>
+		<script>{% include "scenia.js" %}</script>
+		<script src="{% static 'js/main.js'%}"></script>
+		<script src="{% static 'js/step.js'%}"></script>
+		<script src="{% static 'js/project.js'%}"></script>
+        <style>{% block style %}{% endblock style %}</style>
+        <script>{% block script %}{% endblock script %}</script>        
+        {% block head %}{% endblock head %}
+    </head>
+    <body>
+        <nav class="col-md-12" >
+            <a href="{{ root }}/scenia/">
+			<img src="{% static 'img' %}/scenia.svg" height="24" style="margin: 0px 0px 0px 0px; margin-top: -12px; margin-right: 8px; filter: invert(50%)" >
+			<i class="no-print noprint" style="padding-right: 8px; border-right: 1px solid #fff4; margin-right: 12px;">Scenia </i>
+			</a>&nbsp;{% block section %}{% endblock section %}&nbsp;
+			<i style="line-height: 16px; color: #888" class="fa fa-{% block icon %}{% endblock icon %}"></i>&nbsp;
+            <div style="float:right" class="no-print noprint">
+				<button onclick="window.location = '{{root}}/scenia/materials/'" 	class="btn btn-secondary" title="Materials" ><i class="fa fa-industry"></i></button>
+			    <button onclick="window.location = '{{root}}/scenia/gears/'" 		class="btn btn-secondary" title="Tools" 	><i class="fa fa-hammer"></i></button>
+			    <button onclick="window.location = '{{root}}/scenia/colors/'" 	class="btn btn-secondary" title="Colors" 	><i class="fa fa-palette"></i></button>
+			    {% block buttons %}{% endblock buttons %}
+            </div>	
+			<span id="errors" style="font-size: 12px; color: #f00"></span>
+        </nav>
+        {% block body %}{% endblock body %}
+	    <div class="modal_dialog" 				id="lv1" onclick="modal_dialog.dispose()"></div>
+	    <div class="modal_dialog_content" 		id="lv1"></div>
+	    <div class="modal_dialog" 				id="lv2" onclick="modal_subdialog.dispose()"></div>
+	    <div class="modal_dialog_content" 		id="lv2"></div>
+	    <div class="modal_dialog" 				id="lv3" onclick="modal_confirm.dispose()"></div>
+	    <div class="modal_dialog_content" 		id="lv3"></div>
+	    <div class="modal_dialog" 				id="confirm"></div>
+	    <div class="modal_dialog_content" 		id="confirm"></div>	
+		<div class="modal_dialog_content" 		id="errors"></div>	
+		<div class="curtain"					style="display:none;"><div class="loading"><i style="font-size: 64px" class="fas fa-spinner fa-pulse"></i></div></div>
+		<script>
+			modal_dialog.initialize('lv1', 'lv1');
+			modal_subdialog.initialize('lv2', 'lv2');
+			modal_confirm.initialize('lv3', 'lv3');
+			modal_errors.initialize('errors', 'errors');
+		</script>
+		{% block modal %}{% endblock modal %}
+    </body>
+</html>

@@ -1,0 +1,24 @@
+{% extends "admin/change_form.html" %}
+{% block heading %}{% endblock %}
+{% block field_sets %}
+    {{ block.super }}
+    <style>
+        {% include 'admin/admin.css' %}
+        #content-main, #user_form > div {
+            /* columns: 2; */
+            display: inline-block; 
+            
+        }
+        
+        #toolbar {
+            display: none !important;
+            width: 100%;
+        }   
+
+        #changelist {
+            display: inline-block;
+            background: #404040;
+        }
+
+    </style>
+{% endblock %}

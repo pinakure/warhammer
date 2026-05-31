@@ -1,0 +1,14 @@
+{% load app_filters %}
+<!-- col-md-4  -->
+<article id="{{ data.id }}" class="printable-step" >
+    {% include 'steppictures.html' with data=data %}            
+    {% include 'stepitemlist.html' with data=data %}
+    <p class="step-order"><b>{{ data.order|plusone }}</b></p>
+    {% if data.time_required %}
+    <span style="opacity: 0.75; font-size: 24px; font-style: italic; position: absolute; right: 16px; top: 0px;">
+        <i class="fa fa-clock"></i>&nbsp;{{ data.time_required }} min
+    </span>
+    {% endif %}
+    <button title="Edit step #{{ data.id }}" style="outline: none !important" class="step-picture no-print" onclick="Scenia.Modal.Step.Summon.Update({{ data.id }}, {{ project_id }})"><i class="fa fa-edit"></i></button>
+    <!-- <i style="font-style: italic; display:inline-block; width: 100%; text-align: center; padding-top: 8px;">{{ data.brief_description }}</i> -->
+</article>

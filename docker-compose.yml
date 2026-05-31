@@ -1,0 +1,26 @@
+networks:
+  proxy_sql-network:
+    external: true
+
+services:
+  warhammer-service:
+    build: /src/warhammer/web
+    container_name: warhammer
+    hostname: warhammer
+    networks:
+      - proxy_sql-network
+    volumes:
+      - /src/warhammer/web:/src/warhammer/
+      - /static/warhammer:/static/warhammer
+      - /src/warhammer/web/media:/media/warhammer/
+      - /var/log:/var/log
+    environment:
+      DB_HOST: ${DB_HOST}
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      KC_SECRET: ${KC_SECRET}
+      DJANGO_SECRET: ${DJANGO_SECRET}
+    restart: unless-stopped
+
+

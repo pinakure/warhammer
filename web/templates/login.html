@@ -1,0 +1,45 @@
+{% load static %}
+{% load warhammer %}
+<!DOCTYPE html>
+<html>
+<head><title>Warhammer Lexicon</title>
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/select2.min.js' %}"></script>
+<script src="{% static 'js/popper.js' %}"></script>
+<script src="{% static 'js/warhammer_common.js'%}"></script>
+<link rel="shortcut icon" href="{%  static 'favicon.ico' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css'%}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/select2.css'%}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/fontawesome.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/warhammer_style.css' %}" />
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/popper.js' %}"></script>
+<script src="{% static 'js/select2.js'%}"></script>
+<script src="{% static 'js/bootstrap.js'%}"></script>
+<script src="{% static 'js/modal.js' %}"></script>
+<script src="{% static 'js/trigger.js' %}"></script>
+<link rel="stylesheet" type="text/css" href="{%static 'css/select2.css' %}" />
+<script>
+    var pageroot = '{{ page.root }}';
+    var language = '{{ page.language }}';
+    var game     = '{{ page.game }}';
+    var army     = '{{ page.army }}';
+</script>
+</head>
+<body style="background: #303030;">
+    <form style="padding-top: 16px; padding-bottom: 16px; background:#101010; color: #f0f0f0; margin-top: 32px; width:100%; text-align: center;" action="{{ root }}/accounts/login/" method="POST">
+            <div style="border-radius: 3px 3px 3px 3px; padding-left: 8px; padding-right: 8px; padding-bottom: 8px; background: #ffffff20; margin-left: calc(50% - 128px); width: 256px">
+            <h2>GAIA</h2>
+            {% csrf_token %}
+            <label for="username">Username</label><br/><input class="form-control" type="text" name="username" id="username" value="{{ username }}"><br/>
+            <label for="password">Password</label><br/><input class="form-control" type="password" name="password" id="password" value="{{ password }}"><br/>
+            <input type="hidden" name="next" value="{{ next }}">
+            <br/>
+            <input type="submit" class="btn btn-primary" value="Login">
+        </div>
+    </form>
+    <script>
+        $('#username').focus();
+    </script>
+</body>
+</html>

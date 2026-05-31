@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}{% load app_filters %}
+
+{% block title %}Dashboard{% endblock title %}
+{% block section %}Dashboard{% endblock section %}
+{% block icon %}circle{% endblock icon %}
+
+{% block buttons %}
+	<button onclick="window.location='{{ root }}/logout';"	title="Logout"						class="header_button btn btn-danger"   style="right:calc(132px + 91px);"><i class="fa fa-power-off"></i></button>
+	<button onclick="Scenia.Modal.Config.Summon.General()"											class="header_button btn btn-primary"  style="right:132px;"><i class="fa fa-cogs"></i></button>
+	<button onclick="window.location='{{ root }}/admin';"											class="header_button btn btn-danger"   style="right: 91px;"><i class="fa fa-exclamation"></i></button>
+	<button onclick="" 										class="header_button btn btn-warning" style="right: 50px;"><i class="fa fa-ellipsis-h"></i></button>
+	<button onclick="Scenia.Modal.Project.Summon.Insert();" class="header_button btn btn-success" style="right:  9px;"><i class="fa fa-plus"></i></button>
+{% endblock buttons %}
+	
+{% block body %}
+{% include 'bodyscroll.html' %}
+	<!-- <div class="scroller"> -->
+		<h3>Lastest Projects:</h3>
+		<div class="col-md-12" id="updates" >
+			<div class="col-md-12" id="articles"> 
+				{% for a in articles|evaluate %}
+					{% include 'widget_project.html' with project=a %}
+				{% endfor %}
+			</div>
+		
+			<!-- status elements -->
+			<div style="display: none" class="scroller-status">
+				<div class="infinite-scroll-request loader-ellips">
+				...
+				</div>
+				<p class="infinite-scroll-last"></p>
+				<p class="infinite-scroll-error">No more pages to load</p>
+			</div>
+			
+			<p class="pagination">
+				<a class="pagination__next" href="?page={{ page|plusone }}"></a>
+			</p>
+		</div>
+	<!-- </div> -->
+	<script>
+		$('body').ready(function(){
+			// Scenia.Latest(10);
+			$('#articles').infiniteScroll({
+				// options
+				path: '.pagination__next',
+				append: '.project',
+				status: '.scroller-status',
+				hideNav: '.pagination',
+				// history: true,
+			});
+		});
+	</script>
+{% endblock body %}

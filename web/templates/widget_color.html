@@ -1,0 +1,48 @@
+{% load app_filters %}
+{% load static %}
+
+<div id="{{ color.id }}" style="width: 256px; border-radius: 3px 3px 3px 3px; background: #e8e8e8 ; padding: 8px 8px 8px 8px; box-shadow: 4px 4px 0px #0004; margin-top: 8px; position: relative; border: 1px #0008 solid; padding-bottom: 8px; padding-top: 8px; display: inline-flex">
+    <table style="width: 100%; vertical-align: top; top: 0px; right: 0px;">
+        <!-- CODE, COLOR SWATCH AND NAME -->
+        <tr>
+            <td width="16" height="16" style="font-size: 16px; position: relative; text-align: left; vertical-align: top;">
+                {{ color.code }}
+                <div style="
+                background-color: rgb({{ color.r }},{{ color.g }},{{ color.b }}); 
+                width: 16px; height: 16px; 
+                position: absolute;
+                right: 0px; 
+                top: 1px; 
+                display: inline-block; 
+                border-radius: 8px 8px 8px 8px; 
+                box-shadow: 2px 2px 4px #0008 inset; 
+                border: 0.5px #0008 solid;
+                "></div>    
+            </td>
+            <td colspan="2" height="16"  style="vertical-align:middle;">
+                <h6 style="line-height:16px; vertical-align: middle; color: #202020; font-weight: 600;">{{ color.name }}</h6>
+            </td>
+        </tr>
+        <!-- BOTTLE WIDGET -->
+        <tr>
+            <td width="64" height="16" style="text-align: center; position: relative;" rowspan="2">
+                {% include 'widget_bottle.html' with color=color %}
+            </td>
+        </tr>
+        <!-- DETAILS -->
+        <tr>
+            <td colspan="2">
+                <table width="100%">
+                    <tr style="zoom: 0.75"><td style="text-align: right; padding-right: 8px; ">Transparent  </td><td>{% include "yesno.html" with value=color.transparent   %}</td></tr>
+                    <tr style="zoom: 0.75"><td style="text-align: right; padding-right: 8px; ">Metallic     </td><td>{% include "yesno.html" with value=color.mettalic      %}</td></tr>
+                    <tr style="zoom: 0.75"><td style="text-align: right; padding-right: 8px; ">Medium       </td><td>{% include "yesno.html" with value=color.medium        %}</td></tr>
+                    <tr style="zoom: 0.75"><td style="text-align: right; padding-right: 8px; ">Glaze        </td><td>{% include "yesno.html" with value=color.glaze         %}</td></tr>
+                    <tr style="zoom: 0.75"><td style="text-align: right; padding-right: 8px; ">Matte        </td><td>{% include "yesno.html" with value=color.matte         %}</td></tr>
+                    <tr style="zoom: 0.75"><td style="text-align: right; padding-right: 8px; ">Gloss        </td><td>{% include "yesno.html" with value=color.gloss         %}</td></tr>
+                    <tr style="zoom: 0.75"><td style="text-align: right; padding-right: 8px; ">Varnish      </td><td>{% include "yesno.html" with value=color.varnish       %}</td></tr>
+                    <tr style="zoom: 0.75"><td style="text-align: right; padding-right: 8px; ">Wash         </td><td>{% include "yesno.html" with value=color.wash          %}</td></tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>

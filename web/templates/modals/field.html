@@ -1,0 +1,6 @@
+<div class="drawer_container">
+    {% if caption %}<div class="drawer_caption">{{ caption }}</div>{% endif %}
+    <div class="drawer_wrapper {% if caption %} labelled {% else %} fullwidth {% endif %}">
+        {{ content }}
+    </div>
+</div>

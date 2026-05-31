@@ -1,0 +1,46 @@
+{% load app_filters %}
+<table style="width: 100% ;background: #101010; border-radius: 4px 4px 4px 4px;">
+    <tr>
+        <td width="*">
+            <table style="width: 100%; background: #101010; border-radius: 4px 4px 4px 4px;">
+                <tr>
+                    {% if not data.pictures|count %}
+                            <td colspan="2" style="text-align: center;">
+                                {{ data.brief_description }}
+                            </td><td width="150"></td></tr><tr colspan="3">
+                    {% endif %}
+                    {% for p in data.pictures %}
+                        {% if forloop.first %}
+                            <td colspan="2">
+                                <div 
+                                    style="width: 100%; vertical-align: bottom;  background-image: url('{{root}}{{ p.picture }}');" 
+                                    title="{{ p.description }}" 
+                                    class="step-picture"
+                                ></div>
+                            </td><td width="150"></td></tr><tr colspan="3">
+                        {% else %}
+                            <td style="text-align: center;">
+                                <img 
+                                    src="{{root}}{{ p.picture }}" 
+                                    style="max-width: 128px; height: auto;" 
+                                    title="{{ p.description }}"
+                                />
+                            </td>
+                        {% endif %}
+                        {% if forloop.counter0|mod:3 %}
+                            </tr><tr colspan="3">
+                        {% endif %}
+                    {% endfor %}
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td style="text-align: center; font-style: italic;">
+            {% if data.pictures|count %}
+                {{ data.brief_description }}
+            {% endif %}
+        </td>
+        <td></td>
+    </tr>
+</table>

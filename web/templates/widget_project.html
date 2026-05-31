@@ -1,0 +1,70 @@
+<!--
+    Expects object:
+    PROJECT : {
+        id          : int
+        name        : string
+        picture     : path          // higher order step's first picture (can be null)
+        create_time : datetime      // Date of creation
+        description : string
+    }
+-->
+<!-- 
+    <article class="project" id="{{ project.id }}">
+    <header>
+        {% if not project.name %}Unnamed Project{% endif %}{{ project.name }}
+        <div>
+            by <b>{{ project.author }}</b>  
+            <br/>on <b>{{ project.create_time }}</b>
+        </div>
+    </header>
+    {% if project.picture %}<img width="100%" src="{{ project.picture }}"/>`{% endif %}
+    <footer>{% if not project.description %}[ ... ]{% endif %}{{ project.description }}</footer>
+    <div class="col-md-12" id="actions">
+        <button onclick="$('.curtain').show();setTimeout(function(){window.location='{{ root }}/scenia/?project={{ project.id }}';}, 1000);" title="See Project" class="btn btn-info"    type="button"><i class="fa fa-eye"></i></button>
+        <button onclick="Scenia.rateUp({{ project.id }})"                           title="+1"          class="btn btn-success" type="button"><i class="fa fa-thumbs-up"></i></button> 
+        <button onclick="Scenia.rateDown({{ project.id }})"                         title="-1"          class="btn btn-danger"  type="button"><i class="fa fa-thumbs-down"></i></button>
+    </div>
+</article> 
+-->
+<article class="project" id="{{ project.id }}">
+    <table style="width: 100%">
+        <thead style="cursor: pointer" onclick="$('.curtain').show(); window.location='{{ root }}/scenia/?project={{ project.id }}'">
+            <tr>
+                <td colspan="2">    
+                    <header style="padding-top: 0px; padding-bottom: 0px;">
+                        {% if not project.name %}Unnamed Project{% endif %}{{ project.name }}
+                    </header>
+                </td>
+            </tr><tr>
+                <td colspan="2" style="padding-bottom: 8px;">
+                    <header> 
+                        <div>
+                            by <b><a href="{{ root }}/scenia/profile/?id={{ project.author }}">{{ project.author }}</a></b> on <b>{{ project.create_time }}</b>
+                        </div>
+                    </header>
+                </td>                    
+            </tr><tr>
+                <td>
+                    {% if project.picture %}<img width="100%" src="{{ project.picture }}"/>{% endif %}
+                </td>
+                <td>
+                </td>
+            </tr><tr>
+                <td>
+                    <footer>{% if not project.description %}[...]{% endif %}{{ project.description }}</footer>
+                </td>
+                <td>
+                </td>
+            </tr>
+        </thead>
+        <tr>
+            <td colspan="2">
+                <div class="col-md-12" id="actions" style="display: flex; flex-wrap: wrap;">
+                    <button onclick="${ rate_down   }" title="-1" class="btn btn-danger"  type="button"><i class="fa fa-thumbs-down"></i></button>
+                    <button onclick="$('.curtain').show(); window.location='{{ root }}/scenia/?project={{ project.id }}'" class="btn btn-info" type="button" title="View Project"><i class="fa fa-eye"></i></button>
+                    <button onclick="${ rate_up     }" title="+1" class="btn btn-success" type="button"><i class="fa fa-thumbs-up"></i></button> 
+                </div>
+            </td>
+        </tr>
+    </table>
+</article>	

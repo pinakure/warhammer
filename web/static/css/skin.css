@@ -1,0 +1,35 @@
+body {
+    background-color: var(--bg);
+    color: #808080;
+}
+
+#dashboard_title{
+    border: 1px ridge var(--hr);
+}
+#dashboard_title,
+#dashboard_title .fa{
+    background-color: var(--hr);    
+    color: var(--fg) !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
+}
+
+#dashboard_title .fa,
+header{
+    background-color: #0000 !important;
+    color: var(--fg) !important;
+    filter: brightness(1.5);
+    text-shadow: none !important;
+}
+
+#dashboard_title div button .fa {
+    color: #fff !important;
+}
+
+h3 {
+    color: var(--fg) !important;
+}
+
+hr {
+    border: 2px solid var(--hr);
+}

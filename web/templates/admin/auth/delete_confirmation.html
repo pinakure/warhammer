@@ -1,0 +1,28 @@
+{% extends "admin/delete_confirmation.html" %}
+
+{% block content %}
+    {{ block.super }}
+    <style>{% include 'admin/admin.css' %}
+    #content {
+        box-align: center;
+    }
+    #content *{
+        text-align: center;
+    }
+
+    #content ul ,
+    #content ul li {
+        list-style: none;
+        padding: 0px 0px 0px 0px;
+        margin: 0px 0px 0px 0px;
+    }
+    #content > form > div > a,
+    #content input {
+        height: 32px !important;
+        box-sizing: border-box;
+        padding: 4px 4px 4px 4px;
+        margin: 0px 0px 0px 0px;
+        line-height: 24px;
+    }
+    </style>
+{% endblock %}

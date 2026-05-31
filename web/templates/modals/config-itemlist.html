@@ -1,0 +1,13 @@
+<div style="display: inline-block; width: 100%; height: 64px; margin-bottom: 2px;">
+    <div class="drawer_container">
+        {% if caption %}<div class="drawer_caption">{{ caption }}</div>{% endif %}
+        <div class="drawer_wrapper {% if caption %} labelled {% else %} fullwidth {% endif %}">
+            <div class="drawer_box" id="{{ id }}">
+                {% for item in data %}
+                    {% include "config-widget_picture.html" with data=item click="Summon.Update" clickparams=item.id %}
+                {% endfor %}
+                <div title="Add {{ caption }}" onclick="Scenia.Modal.{{ model }}.Summon.Insert({{ step_id }})" class="new_thumb"><i class="fa fa-plus"></i></div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+{% load static %}
+{% load warhammer %}
+
+<select onchange="reloadGame()" id="game" value="{{ page.game }}" style="font-weight: 800; font-size:24px; top: 1px; border: 1px #888 inset; font-family: 'warhammer'; background: #333; color: #ffef00c0; position: absolute; right: 160px; margin-left: auto; margin-right: 0px;">
+    <option value="">-- {{ lex.choosegame }} --</option>    
+    {% for g in page.games %}
+        <option value="{{ g.id }}" style="background-image: url('{{ g.picture }}');">{{g.title}}</option>    
+    {% endfor %}
+</select>
+<script>
+    function reloadGame(){
+        game = $('#game').find(":selected").val();
+        window.location.href = `/?lang=${language}&game=${game}`;
+    }
+    $(`#game option[value={{page.game}}]`).attr('selected', true);
+    $('#game').select2();  
+</script>

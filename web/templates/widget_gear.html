@@ -1,0 +1,30 @@
+{% load app_filters %}
+{% load static %}
+<div id="{{ gear.id }}" style="border-radius: 3px 3px 3px 3px; background: #e8e8e8 ; padding: 8px 8px 8px 8px; box-shadow: 4px 4px 0px #0004; margin-top: 8px; position: relative; border: 1px #0008 solid; padding-bottom: 8px; padding-top: 8px; display: inline-flex">
+    <table style="vertical-align: top; top: 0px; right: 0px;">
+        <tr>
+            <td colspan="2">
+                <h6 style="color: #202020; font-weight: 600;;">{{ gear.name }}</h6>
+            </td>
+        </tr>
+        <tr>
+            <td width="256">
+                {% if not gear.picture == '404' %}
+                    <img height="200" style="width: 256px; height: 256px; float: right; shape-margin: 8px; margin-left: 8px; shape-outside: url({{ gear.picture }})" src="{{ gear.picture }}"/>
+                {% endif %}
+                <p style="border: none; background: transparent; width: 100%; height: 128px; resize:none; font-size: 12px;" 
+                >{{ gear.description }}</p>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                {% if gear.buy_link %}
+                    <div style="width: 100%; text-align: right; padding: 0px 0px 0px 0px; margin: 0px 0px 0px 0px;">
+                        <button type="button" style="outline: none !important; border: none !important; background: #101010; color: #fa4; font-weight: 600; margin: 0px 0px 0px 0px" class="fullwidth btn btn-primary" onclick="window.open('{{ gear.buy_link }}')"><i class="fa fa-usd"></i>&nbsp;Comprar ( {{ gear.price }}€ )</button>
+                    </div>
+                {% endif %}
+            </td>
+        </tr>
+    </table>
+</div>
+    

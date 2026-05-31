@@ -1,0 +1,13 @@
+{% include "modals/modal_wrapper.html" %}
+<button id="modal_subcaption" class="btn">{% if data.id%}Edit Picture #{{ data.order }}{% else %}Add Picture to Step <span id="step_caption">{{ step_id }}</span>{% endif %}</button>
+<form action="" id="fileform" style="display:inline-block; width: 100%; height:100%;">
+    {% include 'modals/formrow.html'    with type="text"    id="description" data='Description'         caption="Description" %}
+    {% include 'modals/formrow.html'    with type="file"    id="picture"     data=''                    caption="File"        %}
+    {% include 'modals/formrow.html'    with type="hidden"  id="step"        data=step_id                                     %}
+    {% include 'modals/formbutton.html' with type="success" id="submit"      data="Scenia.Trigger.Picture.Upload" caption="Upload"      %}
+</form>
+<script>
+    $('#step').val($('#step_id').val());
+    $('#step_caption').html($('#step').val());
+</script>
+{% include "modals/modal_wrapper.html" with close=True %}

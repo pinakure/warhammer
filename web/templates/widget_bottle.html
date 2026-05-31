@@ -1,0 +1,8 @@
+{% load app_filters %}
+{% load static %}
+
+<div style="position: relative; ">
+    <img height="200" src="{% static 'img' %}/vallejoa.png" style="border-radius: 3px 3px 3px 3px; border: 0.5px #0004 solid; background-color: rgb({{ color.r }},{{ color.g }},{{ color.b }})">
+    <div style="display: inline-block; position: absolute; top: 95px; left: calc(50% - 27px); overflow: hidden; height: 7px; width: 54px; text-align: center; font-size: 7px; line-height: 6px; color: #000c; font-weight: 700;">{{ color.name }}</div>
+    <div style="display: inline-block; position: absolute; top: 165px; left: 0px; width: 100%; text-align: center; font-size: 8px; color: #000a; font-weight: 800;">{{ color.code }}</div>
+</div>

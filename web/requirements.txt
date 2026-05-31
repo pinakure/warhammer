@@ -1,0 +1,10 @@
+psycopg2-binary
+requests
+graphene-django
+django-filter
+gunicorn
+django
+django-allauth
+Pillow
+PyJWT<3
+cryptography

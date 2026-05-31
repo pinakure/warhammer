@@ -1,0 +1,6 @@
+<div class="drawer_container">
+    {% if caption %}<div class="drawer_caption"></div>{% endif %}
+    <div class="drawer_wrapper {% if caption %} labelled {% else %} fullwidth {% endif %}">
+        <button type="button" class="btn btn-{{ type }} fullwidth fullheight" id="{{ id }}" name="{{ id }}" onclick="{{ data }}({{ arguments }});">{% if icon %}<i class="fa fa-{{ icon }}"></i>&nbsp{% endif %}{{ caption }}</button>
+    </div>
+</div>

@@ -1,0 +1,108 @@
+{% load warhammer %}
+<wrapper>
+<datawindow>
+    <div class="heading">
+        <div id="icon" class="{{ unit.element }}"></div>
+        <div id="icon" class="power">{{ unit.power }}</div>
+        
+        {% if unit.subtitle %}
+            <div id="title">{{ unit.title }}</div>
+            <div id="subtitle">{{ unit.subtitle }}</div>
+        {% else %}
+            <div id="title" style="height: 80px; line-height: 80px;">{{ unit.title }}</div>
+        {% endif %}
+    </div>
+    <div class="data">
+        <table class="stats">
+            <thead>
+                <tr>
+                    <th title="{{ lex.name | title}}">{{ lex.name | upper }}<button onclick="window.open('{{ page.root }}/admin/dmscreen/unit/{{ unit.id }}/change/')" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; filter: opacity(50%); position: absolute; right: 0px; top:0px;" class="btn btn-sucess">ADMIN</button></th>
+                    <th title="{{ lex.movement | title}}">M</th>
+                    <th title="{{ lex.weapon_skill | title }}">{{ lex.weapon_skill | initials | upper }}</th>
+                    <th title="{{ lex.battle_skill | title }}">{{ lex.battle_skill | initials | upper }}</th>
+                    <th title="{{ lex.strength | title }}">{{ lex.strength | initials | upper }}</th>
+                    <th title="{{ lex.toughness | title }}">{{ lex.toughness | initials | upper }}</th>
+                    <th title="{{ lex.wounds | title }}">{{ lex.wounds | initials | upper }}</th>
+                    <th title="{{ lex.attacks | title }}">{{ lex.attacks | initials | upper }}</th>
+                    <th title="{{ lex.leadership | title }}. {{ lex.leadership_d | capfirst }}">{{ lex.leadership | initials | upper }}</th>
+                    <th title="{{ lex.salvation | title }}">{{ lex.salvation | initials | upper }}</th>
+                    <th title=""></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for troop in unit.crew %}
+                <tr>
+                    <td style="cursor: pointer" onmouseout="hidePicture()" onmouseover="showPicture('{% if troop.picture %}{{ troop.picture.url }}{% endif %}')">{{ troop.name }}</td>
+                    <td>{{ troop.i }}"</td>
+                    <td>{{ troop.ws }}+</td>
+                    <td>{{ troop.bs }}+</td>
+                    <td>{{ troop.s }}</td>
+                    <td>{{ troop.t }}</td>
+                    <td>{{ troop.w }}</td>
+                    <td>{{ troop.a }}</td>
+                    <td>{{ troop.ld }}</td>
+                    <td>{{ troop.sv }}+</td>
+                    <td></td>
+                </tr>
+                {% endfor %}                
+            </tbody>
+        </table>
+    </div>
+    <div class="description">
+        {{ unit.description }}
+    </div>
+    <div class="weapon">
+     <table class="stats">
+            <thead>
+                <tr>
+                    <th title="{{ lex.weapon_name | title }}">{{ lex.weapon | upper }}</th>
+                    <th title="{{ lex.range_desc }}">{{ lex.range |upper }}</th>
+                    <th title="">{{ lex.type | upper }}</th>
+                    <th title="{{ lex.strength | title }}">{{ lex.strength | initials | upper }}</th>
+                    <th title="{{ lex.armor_pierce | title }}">{{ lex.armor_pierce | initials | upper }}</th>
+                    <th title="{{ lex.damage | title }}">{{ lex.damage | initials | upper }}</th>                    
+                    <th title="{{ lex.ability_desc }}">{{ lex.abilities | upper}}</th>                    
+                </tr>
+            </thead>
+            <tbody>
+                {% for weapon in unit.weapons %}
+                <tr>
+                    <td style="cursor: pointer" onmouseout="hidePicture()" onmouseover="showPicture('{% if weapon.picture %}{{ weapon.picture.url }}{% endif %}')">{{ weapon.name }}</td>
+                    <td>{{ weapon.range }}"</td>
+                    <td>{{ weapon.type }}</td>
+                    <td>{{ weapon.s }}</td>
+                    <td>{{ weapon.ap }}</td>
+                    <td>{{ weapon.d }}</td>
+                    <td width="50%">{{ weapon.abilities }}</td>
+                </tr>
+                {% endfor %}                
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <table class="extra">
+            <tbody>
+                {% if unit.options %}
+                    <tr>
+                        <td>{{ lex.wargearopts | upper }}</td>
+                        <td id="wargear">
+                            <ul>
+                                {% for u in unit.equipment %}
+                                    <li>{{ u.description }}</li>
+                                {% endfor %}
+                            </ul>
+                        </td>
+                    </tr>
+                {% endif %}
+                <tr><td style="width:25%">{{ lex.abilities | upper }}</td><td id="table_abilities">{{ unit.abilities }}</td><td ></td></tr> 
+                <tr><td style="width:25%">{{ lex.factionkws| upper }} </td><td id="table_faction_keywords">{{ unit.faction_keywords }}</td><td ></td></tr>
+                {% if unit.keywords %}
+                    {% for kwset in unit.keywords %}
+                        <tr><td>KEYWORDS ({{ kwset.troop }})</td><td>{{ kwset.keywords|links}}</td><td ></td></tr>
+                    {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>        
+    </div>    
+</datawindow>
+</wrapper>

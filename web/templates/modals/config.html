@@ -1,0 +1,7 @@
+<button id="modal_subcaption" class="btn">Manage Database</button>
+<form action="" id="fileform" class="modalform config">
+    {% include 'modals/config-itemlist.html'   with caption="Pictures"     id="pictures"       step_id=0   data=pictures    model="Picture"   %}
+    {% include 'modals/config-itemlist.html'   with caption="Materials"    id="materials"      step_id=0   data=materials   model="Material"  %}
+    {% include 'modals/config-itemlist.html'   with caption="Gear"         id="gears"          step_id=0   data=gear        model="Gear"      %}
+    
+</form>

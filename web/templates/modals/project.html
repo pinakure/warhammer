@@ -1,0 +1,19 @@
+{% include "modals/modal_wrapper.html" %}
+<button id="modal_subcaption" class="btn">{% if data.id %}Edit Project #{{ data.id }}{% else %}Create Project{% endif %}</button>
+<form action="" id="fileform" style="display:inline-block; width: 100%; height:100%;">
+    {% include 'modals/formrow.html'    with caption="Name"         id="name"           type="text"         data=data.name                       %}
+    {% include 'modals/formrow.html'    with caption="Description"  id="description"    type="text"         data=data.description                %}
+    {% if data.id %}
+        {% include 'modals/formbutton.html' with caption="Update"       id="update"         type="success"      data="Scenia.Trigger.Project.Update"    arguments=data.id %}
+        {% include 'modals/formbutton.html' with caption="Delete"       id="delete"         type="danger"       data="Scenia.Trigger.Project.Delete"    arguments=data.id %}
+    {% else %}
+        {% include 'modals/formrow.html'    with caption="Taxonomy"     id="taxonomy"       type="select"       data=taxonomies         value=data.subtaxonomy.taxonomy.id  callback="Scenia.Taxonomy.Load($('#taxonomy').val())" %}
+        {% include 'modals/formbutton.html' with caption="Create"       id="insert"         type="success"      data="Scenia.Trigger.Project.Insert"  %}
+    {% endif %}
+</form>
+<script>
+    $('#fileform').ready(function(){
+        Scenia.Taxonomy.All();
+    });
+</script>   
+{% include "modals/modal_wrapper.html" with close=True %}

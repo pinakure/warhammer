@@ -1,0 +1,20 @@
+{% extends "admin/change_list.html" %}
+
+{% block content %}
+    {{ block.super }}
+    <style>{% include 'admin/admin.css' %}
+    div#footer {
+        position: fixed;
+        width: 50% !important;
+        height: 128px !important;
+        left: 50%;
+        top: calc(50% -  64px);
+        background-color: #00000000 !important;
+        opacity: .9;
+    }
+    #changelist,
+    #changelist-form {
+        width: 100% !important;
+    }
+    </style>
+{% endblock %}

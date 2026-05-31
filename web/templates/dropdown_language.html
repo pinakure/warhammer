@@ -1,0 +1,16 @@
+{% load static %}
+{% load warhammer %}
+
+<select onchange="reloadLanguage()" id="language" value="{{ page.language }}">
+    <option value="es">ES</option>    
+    <option value="en">EN</option>    
+</select>
+<script>
+    function reloadLanguage(){
+        lang = $('#language').find(":selected").val();
+        if(lang == '')return;
+        window.location.href = `/?lang=${lang}&game=${game}`;
+    }
+    $(`#language option[value={{page.language}}]`).attr('selected', true);
+    // $('#language').select2();  
+</script>

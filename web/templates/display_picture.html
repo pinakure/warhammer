@@ -1,0 +1,15 @@
+<div 
+    class="center fullheight col-md-{{ width }} {% if border %}marco{% endif %}" 
+    style="
+        background-image    : url('{{ picture.picture.picture }}'); 
+        background-position : center; 
+        background-size     : contain; 
+        background-repeat   :no-repeat;
+    "
+>
+    <img 
+        class="print" 
+        src="{{ picture.picture.picture }}" 
+        style="height:100%"
+    >
+</div>

@@ -1,0 +1,6 @@
+{% load warhammer %}
+<div id="stratagems">
+    {% for s in stratagems %}
+        {% include 'stratagem.html' with stratagem=s %}
+    {% endfor %}
+</div>

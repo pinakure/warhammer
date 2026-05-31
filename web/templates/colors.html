@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load app_filters %}
+
+{% block buttons %}
+    {% if user.is_superuser %}
+        <button onclick="window.location='{{ root }}/admin/scenia/color/';" class="header_button btn btn-danger"   style="right: 91px;"><i class="fa fa-exclamation"></i></button>
+    {% endif %}
+{% endblock buttons %}
+
+{% block section %}Colors{% endblock section %}
+{% block icon %}palette{% endblock icon %}
+{% block title %}Colors{% endblock title %}
+
+{% block body %}
+    {% include 'bodyscroll.html' %}
+    <div id="colors" style=" display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-around;">
+        {% for m in colors %}
+            {% include 'widget_color.html' with color=m|evaluate %}
+        {% endfor %}
+    </div>
+{% endblock body %}

@@ -1,0 +1,49 @@
+<div class="drawer_container">
+    {% if caption %}<div class="drawer_caption">{{ caption }}</div>{% endif %}
+    {% if type != 'hidden' %}    
+    <div class="drawer_wrapper {% if caption %} labelled {% else %} fullwidth {% endif %}">
+    {% endif %}
+        {% if type == 'readonly' %}
+            <input style="height: 100%; width: 100%" readonly="readonly" type="text" class="input control" id="{{ id }}" name="{{ id }}" value="{{ data }}"/>
+        {% elif type == 'select' %}
+            {% if button %}
+                <select {% if multiple %}multiple="multiple" {% endif %} style="display: inline-block; height: 100%; width: calc(100% - 74px)" type="{{ type }}" class="input control" id="{{ id }}" name="{{ id }}" value="{{ data }}">
+            {% else %}
+                <select {% if multiple %}multiple="multiple" {% endif %}style="height: 100%; width: 100%" class="input control" id="{{ id }}" name="{{ id }}" value="" onchange="{{ callback }}">                
+            {% endif %}
+                <option value="" title="Select one.">--</option>
+                {% for kv in data %}
+                    <option name="{{ kv.name }}" {% if kv.value == value %}selected="selected"{% endif %} value="{{ kv.value}}">{{ kv.name }}</option>
+                {% endfor %}
+            </select>
+            <script>
+                function get_select2_format(data) {
+                    if (!data.id) return data.text;
+                    return $(`<span style="display: inline-block; width:80%"><span style="display: inline-block; width:20%">${ data.id }</span><b>${ data.text }</b></span>`);
+                }
+                $('#{{id}}').select2({
+                    ajax: {            
+                        url: `${Scenia.root}lookup/`,
+                        data : function (params) {
+                            var query = {
+                                model   : '{{ caption }}',
+                                search  : params.term,
+                                auth    : Scenia.auth(),
+                            };
+                            return query;
+                        },
+                        dataType: 'json',
+                    },
+                    templateResult : get_select2_format,
+                });
+            </script>
+            {% if button %}
+                <div onclick="{{ button }}({{arguments}})" style="display: inline-block" class="new_thumb"><i class="fa fa-plus"></i></div>            
+            {% endif %}
+        {% else %}
+            <input style="height: 100%; width: 100%" type="{{ type }}" class="input control" id="{{ id }}" name="{{ id }}" value="{{ data }}"/>
+        {% endif %}
+    {% if type != 'hidden' %}    
+    </div>
+    {% endif %}    
+</div>

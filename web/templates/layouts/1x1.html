@@ -1,0 +1,8 @@
+{% load static %}
+{% load app_filters %}
+<div style="height: calc(100% - 50px);max-height: calc(100% - 50px);" class="col-md-12">
+    {% include 'display_picture.html' with width=12 picture=step.pictures.0 %}
+</div>
+<div style="height: 50px; max-height: 50px;overflow:hidden;" class="col-md-12">
+    <div class="center fullheight col-md-12 {% if border %}marco{% endif %}">{{ step.brief_description }}</div>
+</div>

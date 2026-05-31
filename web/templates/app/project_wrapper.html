@@ -1,0 +1,251 @@
+{% load static %}{% load app_filters %}<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta name="encoding" value="utf-8">		
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">		
+    <title>Scenia : Edit project - {% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/default.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/global.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/select2.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/fontawesome.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/' %}skin_{{ skin }}.css" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/skin.css' %}" />
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/warhammer_style.css' %}" /> -->
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/popper.js' %}"></script>
+    <script src="{% static 'js/select2.js'%}"></script>
+    <script src="{% static 'js/bootstrap.js'%}"></script>
+    <script src="{% static 'js/infinite.js'%}"></script>
+    <script src="{% static 'js/modal.js' %}"></script>
+    <script src="{% static 'js/trigger.js' %}"></script>
+    <script>{% include "scenia.js" %}</script>
+    <script src="{% static 'js/main.js'%}"></script>
+    <script src="{% static 'js/step.js'%}"></script>
+    <script src="{% static 'js/project.js'%}"></script>
+    <style>{% block style %}{% endblock style %}</style>
+    <script>{% block script %}{% endblock script %}</script>        
+    {% block head %}{% endblock head %}
+</head>
+<style>
+html {
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    height: 100%;
+}
+body {
+    height: 100%;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    overflow: hidden;    
+}
+* {
+    font-family: sans-serif;
+}
+/* ---------------------------------------- */
+.center {
+    text-align: center;
+}
+.round {
+    width: 40px !important;
+    height: 40px !important;
+    line-height: 20px;
+    padding: 0px 0px 0px 0px;
+    font-weight: 400 !important;
+    border-radius: 20px 20px 20px 20px ;
+}
+.alpha75 {
+    filter: opacity(0.75);
+    -moz-filter: opacity(0.75);
+    -webkit-filter: opacity(0.75);
+}
+
+.left {
+    float: left;
+}
+.right {
+    float: right;
+}
+#app_body {
+    width: 100%;
+    height: 100%;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    background: #f0f0f0;
+}
+#project_name > table,
+#app_body > table,
+#app_body > table tr {
+    width: 100%;
+    background-color: #f0f0f0;
+}
+td#steps {
+    width: 90%;
+}
+#project_icon,
+#edit_name {
+    width: 50px;
+}
+#app_body table tr td,
+#app_body table tr td *{
+    text-align: center;
+    vertical-align: middle;
+}
+#project_name {
+    text-align: left !important;
+    font-size: 26px;
+    font-family: sans-serif;
+    line-height: 24px;
+    font-weight: 400;
+}
+#project_icon img {
+    width:32px; 
+    height:32px; 
+    background-color: #f0f0f0;
+    border-radius: 16px 16px 16px 16px;
+}
+footer#buttons{
+    background-color: #66b921 !important;
+    height: 64px;
+    box-shadow: 0px -2px 2px #0008;    
+}
+footer#buttons div button {
+    background-color: #2e6b12 !important;
+    border: 1px solid #5e911b !important;    
+}
+footer#buttons div button:hover {
+    filter:brightness( 1.2 );    
+}
+footer#buttons div button:active {
+    filter:brightness( 1.3 );
+}
+footer#buttons div {
+    width: calc( 49% - 9px );
+    padding: 8px 8px 8px 8px;
+    padding-top: 0px;
+}
+#step_list {
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: left;
+}
+
+#app_body > table {
+    height: calc( 100% - 80px );
+}
+section {
+    background-color: #ccc;
+    border-style: dashed;
+    border-width: 4px;
+    border-color: #aaa;
+    margin-left: 10%;
+    width: 80%;
+    min-height: 320px;
+    overflow: hidden;
+    margin-bottom: 16px;
+}
+#step_detail {
+    text-align: left !important;
+}
+.step_move_padding {
+    width: 40%;
+}
+#step_list > table {
+    width: 100%;
+}
+#projectname {
+    width: 100%;
+    text-align: left !important;
+}
+</style>
+
+<div id="app_body">
+    <header id="project_name">
+        <table>
+            <tr>
+                <td id="project_icon">
+                    <img src="{% static 'img' %}/scenia.svg" class="round alpha75" >			
+                </td>
+                <td id="project_name">
+                    <input type="text" id="projectname" name="projectname" value="Project Name" readonly="readonly" disabled="disabled"/>
+                </td>
+                <td id="edit_name">
+                    <button type="button" class="btn btn-primary round" id="edit_name_action"><i class="fa fa-edit"></i></button>
+                </td>
+            </tr>
+        </table>
+    </header>
+    <table>
+        <tr>
+            <td>
+                <button type="button" class="btn btn-secondary round" id="previous_step"><i class="fa fa-arrow-left"></i></button>
+            </td>
+            <td id="steps">
+                <div id="step_list">
+                    <table>
+                        <tr>
+                            <td class="step_move_padding"></td>
+                            <td id="step_move_backward">
+                                <button class="btn btn-secondary round"  type="button"><i class="fa fa-arrow-left"></i></button>
+                            </td>
+                            <td>
+                                &nbsp;Step
+                            </td>
+                            <td id="step_index">
+                                #
+                            </td>
+                            <td>
+                                &nbsp;
+                            </td>
+                            <td id="step_move_forward">
+                                <button class="btn btn-secondary round"  type="button"><i class="fa fa-arrow-right"></i></button>
+                            </td>
+                            <td class="step_move_padding"></td>                            
+                        </tr>
+                    </table>
+                    <div id="step_detail">
+                        Pictures
+                        <hr>
+                        <section id="pictures">
+
+                        </section>
+                        Description
+                        <hr>
+                        <section id="text">
+
+                        </section>
+                        Gear
+                        <hr>
+                        <section id="gear">
+
+                        </section>
+                        Materials
+                        <hr>
+                        <section id="materials">
+
+                        </section>
+                        Paint
+                        <hr>
+                        <section id="paint">
+
+                        </section>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <button type="button" class="btn btn-secondary round" id="next_step"><i class="fa fa-arrow-right"></i></button>
+            </td>
+        </tr>
+    </table>
+
+    <footer id="buttons">
+        <div class="center left">
+            <button type="button" class="btn btn-primary" ><i class="fa fa-save">&nbsp;</i>Save Draft</button>
+        </div>
+        <div class="center right">
+            <button type="button" class="btn btn-primary" ><i class="fa fa-check">&nbsp;</i>Publish</button>
+        </div>
+    </footer>
+
+</div>

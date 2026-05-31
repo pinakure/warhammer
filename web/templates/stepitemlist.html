@@ -1,0 +1,58 @@
+{% load app_filters %}
+
+<div id="stepitemlist">
+    {% if data.materials|count %}
+        <div style="
+            border-radius: 4px 4px 4px 4px; 
+            background: #8c4; 
+            color: #103010;
+            padding-right: 8px;
+            padding-bottom: 0px;
+            font-size: 12px;
+            margin-bottom: 4px;
+        ">
+            <p style="margin-left: 4px; line-height: 16px; margin-bottom: 0px;"><small><i style="color: #000a" class="fa fa-industry"></i>&nbsp;<b>Materials</b></small></p>
+            <ul style="display: inline-block; padding-bottom: 0px; padding-left: 20px;" class="step-materials">
+                {% for m in data.materials %}
+                    <li id="{{ m.id }}">{{ m.name }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    {% if data.gears|count %}
+        <div style="
+            border-radius: 4px 4px 4px 4px; 
+            background: #4c8; 
+            color: #101030;
+            padding-right: 8px;
+            padding-bottom: 0px;
+            font-size: 12px;
+            margin-bottom: 4px;
+        ">
+            <p style="margin-left: 4px; line-height: 16px; margin-bottom: 0px;"><small><i style="color: #000a" class="fa fa-hammer"></i>&nbsp;<b>Tools</b></small></p>
+            <ul style="display: inline-block; padding-bottom: 0px; padding-left: 20px;" class="step-materials">
+                {% for m in data.gears %}
+                    <li id="{{ m.id }}">{{ m.name }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    {% if data.colors|count %}
+        <div style="
+        border-radius: 4px 4px 4px 4px; 
+        background: #ccc; 
+        color: #202020;
+        padding-right: 8px;
+        padding-bottom: 0px;
+        font-size: 12px;
+        margin-bottom: 4px;
+        ">
+        <p style="margin-left: 4px; line-height: 16px; margin-bottom: 0px;"><small><i style="color: #000a" class="fa fa-palette"></i>&nbsp;<b>Colors</b></small></p>
+        <ul style="display: inline-block; padding-bottom: 0px; padding-left: 20px;" class="step-materials">
+            {% for c in data.colors %}
+                <li id="{{ c.id }}" title="{{ c.name }} ({{ c.brand }})"><swatch style="background: rgb({{c.r}},{{c.g}},{{c.b}})"></swatch>{{ c.code }}</li>
+            {% endfor %}
+        </ul>
+        </div>
+    {% endif %}
+</div>

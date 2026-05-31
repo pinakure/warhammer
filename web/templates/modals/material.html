@@ -1,0 +1,21 @@
+{% include "modals/modal_wrapper.html" %}
+<button id="modal_subcaption" class="btn">{% if data.id %}Edit Material #{{ data.id }}{% else %}Create Material{% endif %}</button>
+<form action="" id="fileform" class="modalform new_material">
+    {% include 'modals/formrow.html'        with caption="Name"             id="name"           type="text"         data=data.name                          %}
+    {% include 'modals/formrow.html'        with caption="Description"      id="description"    type="text"         data=data.description                   %}
+    {% include 'modals/formrow.html'        with caption="Buy Link"         id="buy_link"       type="text"         data=data.buy_link                      %}
+    {% include 'modals/formrow.html'        with caption="Price"            id="price"          type="number"       data=data.price                         %}
+    {% include 'modals/formrow.html'        with caption="Picture"          id="picture"        type="file"         data=data.picture                       %}
+    {% if data.id %}
+        {% include 'modals/formbutton.html' with caption="Delete Material"  id="submit"         type="danger"       data="Scenia.Trigger.Material.Delete"   %}
+        {% include 'modals/formbutton.html' with caption="Update Material"  id="submit"         type="success"      data="Scenia.Trigger.Material.Update"   %}
+    {% else %}
+        {% include 'modals/formbutton.html' with caption="Create Material"  id="submit"         type="success"      data="Scenia.Trigger.Material.Upload"   %}
+    {% endif %}
+</form>
+<script>
+    $('#fileform').ready(function(){
+        $('.new_material #name').focus();
+    });
+</script>
+{% include "modals/modal_wrapper.html" with close=True %}

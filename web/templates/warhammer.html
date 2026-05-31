@@ -1,0 +1,60 @@
+{% load static %}
+{% load warhammer %}
+<!DOCTYPE html>
+<html>
+<head><title>Warhammer Lexicon</title>
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/select2.min.js' %}"></script>
+<script src="{% static 'js/popper.js' %}"></script>
+<script>const BASEURL=`{{ "" | baseurl }}`;</script>
+<script src="{% static 'js/warhammer_common.js'%}"></script>
+<link rel="shortcut icon" href="{%  static 'favicon.ico' %}">
+<link rel="stylesheet" type="text/css" href="{%static 'css/warhammer_style.css' %}" />
+<link rel="stylesheet" type="text/css" href="{%static 'css/select2.css' %}" />
+<script>
+    var pageroot = '{{ page.root }}';
+    var language = '{{ page.language }}';
+    var game     = '{{ page.game }}';
+    var army     = '{{ page.army }}';
+</script>
+</head>
+<body>
+<div style="z-index: -400;position: fixed; width: 100%; height: 100%; left: 0px ; top: 0px;" class="background no-print"></div>
+<nav style="background-image: url('{{ page.logo }}') !important;" class="no-print warhammer_{{ page.game }}">
+    <!-- <HEADER DROPDOWNS> -->
+    {% include 'dropdown_army.html' %}    
+    {% include 'dropdown_unit_troop.html' %}    
+    {% include 'dropdown_games.html' %}    
+    <button class="button" onclick="window.open('/admin/');" type="button">{{ lex.admin | title }}</button>
+    <img class="glow" title="Scenia: Terrain Community" onclick="window.location='https://scenia.iskarion.ddns.net'" style="cursor: pointer; filter: invert(50%); display: inline-block; margin: 0px 0px 0px 0px; position: absolute; top: 2px; right: 136px;" src="{% static 'img' %}/scenia.svg" height="32">
+    {% include 'dropdown_language.html' %}    
+    <!-- </ HEADER DROPDOWNS> -->
+    <div id="errors"></div>
+    <script>
+        function showTab(id){
+            $('tab').each(function(){ $(this).removeClass('active'); });
+            $('tablabel').each(function(){ $(this).removeClass('active'); });
+            $('#'+id).addClass('active');            
+            $('#label_'+id).addClass('active');            
+        }
+
+        $(document).ready(function(){
+            $('tab').each(function(e){
+                title = $(this)[0].title;
+                target = $(this)[0].id;
+                $(this).removeAttr('title');
+                node = `<tablabel id="label_${target}" onclick="showTab('${target}')" target="${target}">${title}</tablabel>`;
+                $('tablabels').html($('tablabels').html()+node);
+            });
+        });
+    </script>
+</nav>
+<tablabels class="no-print"></tablabels>
+<tabpanel id="tabpanel">
+    <tab id="tab_datacard"   title="{{ lex.datacard }}"></tab>
+    <tab id="tab_pictures"   title="{{ lex.pictures }}"></tab>
+    <tab id="tab_stratagems" title="{{ lex.stratagems }}"></tab>
+</tabpanel>
+<picture></picture>
+</body>
+</html>

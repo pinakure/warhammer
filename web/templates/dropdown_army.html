@@ -1,0 +1,22 @@
+{% load static %}
+{% load warhammer %}
+
+<select onchange="reloadArmy()" id="army" value="{{ page.army }}">
+    <option value="">--</option>    
+    {% for army in page.armies %}
+        {% if army.id == page.army %}
+            <option value="{{ army.id }}" selected="selected">{{ army.name }}</option>
+        {% else %}
+            <option value="{{ army.id }}">{{ army.name }}</option>
+        {% endif %}
+    {% endfor %}
+</select>
+<script>
+    function reloadArmy(){
+        army = $('#army').find(":selected").val();
+        if(army == '')return;        
+        window.location.href = `/?lang=${language}&game=${game}&army=${army}`;
+    }
+    $(`#army option[value={{page.army}}]`).attr('selected', true);
+    $('#army').select2();
+</script>

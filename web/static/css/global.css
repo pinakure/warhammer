@@ -1,0 +1,93 @@
+:root {
+    --inch-size     : 96px;
+    --corner        : 32px;
+    --corner-in     : 24px;
+    --picture-size  : 320px;
+    --tlabel-height : 24px;
+}
+
+html {
+    width: 100%;
+    height: 100%,
+}
+
+body * {
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    /*overflow: hidden;*/
+}
+
+.invisible {
+    visibility: none;
+    display: none;
+}
+
+@media print
+{    
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
+}
+
+/* MODALS UI ADDONS  */
+.new_thumb:hover {
+    background: #4a4c;    
+}
+.new_thumb {
+    cursor: pointer;
+    display: inline-block;
+    height: 64px;
+    width: 64px;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    background-color: #4a48;
+    border-radius: 8px 8px 8px 8px;
+    background-repeat: no-repeat no-repeat;
+    text-align: center;
+    line-height: 64px;
+    font-size: 24px;
+    color: #fff;
+    vertical-align: top;
+}
+
+.img_thumb {
+    display: inline-block; 
+    position: relative; 
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    cursor: pointer;
+    display: inline-block;
+    height: 100%;
+    width: 64px;
+    background-color:  #4448;
+    border-radius: 8px 8px 8px 8px;
+    background-repeat: no-repeat no-repeat;
+    background-size: cover;
+    text-align: center;
+    line-height: 64px;
+    font-size: 24px;
+    color: #fff;
+}
+.drawer_box {
+    min-height: 32px;
+    height: 64px;
+    width: 100%;
+    max-height: 64px;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    background: #88a2; 
+    border-radius: 8px 8px 8px 8px;
+}
+.loading {
+    position    : absolute;
+    width       : 100%;
+    color       : #fc4;
+    text-align  : center;
+    top         : calc(50% - 32px);
+    text-shadow : 0px 0px 8px #fc4;
+}

@@ -1,0 +1,90 @@
+{% extends "admin/change_form.html" %}
+{% block breadcrumbs %}
+<div style="background-attachment: scroll;
+background-clip: border-box;
+background-color: rgb(204, 121, 21);
+background-image: none;
+background-origin: padding-box;
+background-position-x: 0%;
+background-position-y: 0%;
+background-repeat-x: ;
+background-repeat-y: ;
+background-size: auto;
+border-bottom-left-radius: 4px;
+border-bottom-right-radius: 4px;
+border-top-left-radius: 4px;
+border-top-right-radius: 4px;
+color: rgb(255, 255, 255);
+cursor: pointer;
+display: block;
+font-family: Roboto, 'Lucida Grande', 'DejaVu Sans', 'Bitstream Vera Sans', Verdana, Arial, sans-serif;
+font-size: 14px;
+height: 15px;
+line-height: 15px;
+padding-bottom: 10px;
+padding-left: 15px;
+padding-right: 15px;
+padding-top: 10px;
+text-align: right;
+text-decoration-color: rgb(255, 255, 255);
+text-decoration-line: none;
+text-decoration-style: solid;
+width: 39px;" type="button" onclick="window.history.back();">Return</div>
+{% endblock %}
+{% block field_sets %}
+    {{ block.super }}
+    <style>
+        {% include 'admin/admin.css' %}
+        #content-main, #user_form > div {
+            /* columns: 2;        */
+        }
+
+        #changelist-search {
+            width: 100%;
+        }   
+
+        .module.filtered {
+            display: inline-block;
+        }
+
+        ul.object-tools {
+            display: none;
+        }
+        .form-row {
+            border-bottom: 1px #0000 solid;
+            box-sizing: border-box;
+            padding: 0px 0px 0px 0px;
+            margin: 0px 0px 0px 0px;
+        }
+        .form-row:nth-child(even) {
+            background: #f0f0f0;
+            
+        }
+        .form-row:nth-child(odd) {
+            background: #f8f8f8;
+        }
+        .related-widget-wrapper {
+            width: 75%;
+            
+        }
+        .related-widget-wrapper select {
+            width: 75%;
+            background: #000000;
+            color: #f0a060;
+        }
+        label {
+            box-sizing: border-box !important;
+            padding-left: 4px !important;
+        }
+        textarea,
+        input[type=text],
+        input[type=number]{
+            background: #000000;
+            color: #f0a060;
+            font-family: 'Consolas';
+            width: 75%;
+            margin-left: 2px;
+        }
+
+    </style>
+{% endblock %}
