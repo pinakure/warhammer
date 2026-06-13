@@ -111,3 +111,4 @@ SOCIALACCOUNT_PROVIDERS = {
         }
     }
 }
+X_FRAME_OPTIONS = 'ALLOW'
