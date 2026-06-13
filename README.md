@@ -1,10 +1,9 @@
 # Warhammer Lexicon
-
-
 ![STATUS: WIP](https://img.shields.io/badge/status-WIP-yellow)
+![Python](https://img.shields.io/badge/python-brown?logo=python)
+![Django](https://img.shields.io/badge/django-brown?logo=django)
 ![CSS](https://img.shields.io/badge/css-brown?logo=css)
 ![javascript](https://img.shields.io/badge/javascript-brown?logo=javascript)
-![Django](https://img.shields.io/badge/django-brown?logo=django)
 ![Docker](https://img.shields.io/badge/docker-brown?logo=docker)
 
 ## Project Description
